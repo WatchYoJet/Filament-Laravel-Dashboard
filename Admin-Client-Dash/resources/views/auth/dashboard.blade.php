@@ -9,7 +9,7 @@
             <div class="card-body">
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success">
-                        Welcome back, {{ Auth::user()->name }}!
+                        {{ $message }}
                     </div>   
                 @endif
                 <table class="table">
@@ -17,7 +17,7 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Age</th>
                         </tr>
                     </thead>
                     @foreach($users as $user)
@@ -25,7 +25,7 @@
                         <tr>
                             <th scope="row">{{$user['id']}}</th>
                             <td>{{$user['name']}}</td>
-                            <td>{{$user['email']}}</td>
+                            <td>{{$user['age']}}</td>
                         </tr>
                     </tbody>
                     @endforeach

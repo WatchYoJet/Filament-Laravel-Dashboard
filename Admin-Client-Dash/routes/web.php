@@ -19,7 +19,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 
 Route::controller(AnimalController::class)->group(function() {
     Route::get('/addPet', 'addPet')->name('addPet');
-    //Route::post('/store', 'store')->name('store');
+    Route::post('/storePet', 'storePet')->name('storePet');
 });
 
 

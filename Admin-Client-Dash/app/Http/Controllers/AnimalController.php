@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class AnimalController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except([
-            'logout', 'addPet'
+            'storePet', 'addPet'
         ]);
     }
 
@@ -26,25 +27,24 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storePet(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:250',
-            'email' => 'required|email|max:250|unique:users',
-            'password' => 'required|min:8|confirmed'
+            'name' => 'required',
+            'age' => 'required|integer|min:0',
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
 
-        $credentials = $request->only('email', 'password');
-        Auth::attempt($credentials);
-        $request->session()->regenerate();
+
+        $pet = new Animal();
+        $pet->name = $request->name;
+        $pet->age = $request->age;
+        // Assuming the authenticated user is the pet's owner
+        $pet->user_id = auth()->user()->id;
+        $pet->save();
+
         return redirect()->route('dashboard')
-        ->withSuccess('You have successfully registered & logged in!');
+        ->withSuccess('Pet registered successfully!');
     }
 
     /**

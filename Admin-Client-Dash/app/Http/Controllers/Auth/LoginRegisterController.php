@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\Animal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -102,7 +103,7 @@ class LoginRegisterController extends Controller
     {
         if(Auth::check())
         {
-            $data = User::all();
+            $data = auth()->user()->animals;
             return view('auth.dashboard', ['users' => $data]);
         }
         
