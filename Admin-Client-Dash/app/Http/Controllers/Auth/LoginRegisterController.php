@@ -127,4 +127,5 @@ class LoginRegisterController extends Controller
             ->withSuccess('You have logged out successfully!');;
     }    
 
+
 }

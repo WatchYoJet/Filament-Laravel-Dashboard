@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 
 /*
@@ -16,12 +17,11 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(AnimalController::class)->group(function() {
+    Route::get('/addPet', 'addPet')->name('addPet');
+    //Route::post('/store', 'store')->name('store');
 });
 
-Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
@@ -29,5 +29,6 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });

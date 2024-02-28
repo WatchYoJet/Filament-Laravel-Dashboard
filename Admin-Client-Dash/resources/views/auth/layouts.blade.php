@@ -38,7 +38,7 @@
                                 @csrf
                             </form>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}"
+                        <li><a class="dropdown-item" href="./addPet"
                             >Add new Pet</a>
                         </li>
                         </ul>
