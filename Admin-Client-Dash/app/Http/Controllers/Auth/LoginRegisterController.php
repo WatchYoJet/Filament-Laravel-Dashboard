@@ -42,13 +42,15 @@ class LoginRegisterController extends Controller
         $request->validate([
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
+            'postal_code' => 'required|string|max:250',
             'password' => 'required|min:8|confirmed'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'postal_code' => $request->postal_code
         ]);
 
         $credentials = $request->only('email', 'password');
