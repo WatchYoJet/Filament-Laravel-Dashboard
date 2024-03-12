@@ -32,6 +32,7 @@ class AnimalController extends Controller
         $request->validate([
             'name' => 'required',
             'age' => 'required|integer|min:0',
+            'postal_code' => 'required|string|max:250',
         ]);
 
 
@@ -39,7 +40,7 @@ class AnimalController extends Controller
         $pet = new Animal();
         $pet->name = $request->name;
         $pet->age = $request->age;
-        // Assuming the authenticated user is the pet's owner
+        $pet->postal_code = $request->postal_code;
         $pet->user_id = auth()->user()->id;
         $pet->save();
 

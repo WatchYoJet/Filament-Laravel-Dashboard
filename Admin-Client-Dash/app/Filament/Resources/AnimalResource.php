@@ -27,7 +27,9 @@ class AnimalResource extends Resource
             ->schema([
                 TextInput::make('name') -> required(),
                 TextInput::make('age') -> required(),
+                TextInput::make('postal_code') -> required(),
                 TextInput::make('user_id') -> required(),
+
             ]);
     }
 
@@ -37,6 +39,7 @@ class AnimalResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('age'),
+                TextInput::make('postal_code'),
                 TextColumn::make('user_id')->sortable(['user_id']),
             ])
             ->filters([

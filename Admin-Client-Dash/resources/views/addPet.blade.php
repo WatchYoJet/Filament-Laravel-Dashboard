@@ -29,6 +29,15 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="postal_code" class="col-md-4 col-form-label text-md-end text-start">Postal Code</label>
+                        <div class="col-md-6">
+                            <input type="postal_code" class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" name="postal_code">
+                            @if ($errors->has('postal_code'))
+                                <span class="text-danger">{{ $errors->first('postal_code') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Pet">
                     </div>
                 </form>

@@ -18,6 +18,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Age</th>
+                            <th scope="col">Postal Code</th>
                         </tr>
                     </thead>
                     @foreach($users as $user)
@@ -26,6 +27,7 @@
                             <th scope="row">{{$user['id']}}</th>
                             <td>{{$user['name']}}</td>
                             <td>{{$user['age']}}</td>
+                            <td>{{$user['postal_code']}}</td>
                         </tr>
                     </tbody>
                     @endforeach

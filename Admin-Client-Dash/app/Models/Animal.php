@@ -14,6 +14,7 @@ class Animal extends Model
         'AnimalName',
         'Age',
         'user_id',
+        'postal_code'
     ];
 
     public function user()

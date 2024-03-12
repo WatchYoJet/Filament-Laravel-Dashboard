@@ -27,7 +27,6 @@ class UserResource extends Resource
             ->schema([
                 TextInput::make('name') -> required(),
                 TextInput::make('email') -> email() -> required(),
-                TextInput::make('postal_code') -> required(),
                 TextInput::make('password') -> password() -> required(),
             ]);
     }
@@ -38,7 +37,6 @@ class UserResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 TextColumn::make('email'),
-                TextColumn::make('postal_code'),
                 TextColumn::make('password')
             ])
             ->filters([
